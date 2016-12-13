@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>Business Login</h1>
+    <input type="text"
+           ng-style="username"
+           name="username"
+           ng-model="model.user.username"
+           class="form-control"
+           placeholder="username" autocorrect="off" autocapitalize="off" required/>
+    <input type="password"
+           ng-style="password"
+           ng-model="model.user.password"
+           class="form-control"
+           placeholder="password" required/>
+    <a class="btn btn-primary btn-block" ng-click="model.login(model.user, bus)">Login</a>
+    <a class="btn btn-success btn-block" href="#/buRegister">Register</a>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+</div>
