@@ -8,47 +8,78 @@
         .controller("RegisterController", RegisterController)
         .controller("ProfileController", ProfileController);
 
-    function LoginController($location, UserService) {
+    function LoginController($location, UserService, $rootScope) {
         var vm = this;
         vm.login = login;
         vm.logout = logout;
+        vm.uid = 000;
+
+        function isLoggedIn() {
+            UserService
+                .isLoggedIn()
+                .then(function (response) {
+                    $rootScope.isLoggedIn = response.data;
+                });
+        }
+
+        isLoggedIn();
 
         function logout(){
             UserService
                 .logout()
                 .then(function (response) {
                     $rootScope.currentUser = null;
+                    $rootScope.isLoggedIn = false;
                     $location.url("/");
                 });
         }
 
         function login(user, type) {
-            user.type = type;
-            UserService
-                .login(user)
-                .success(function (user) {
-                    vm.user = user;
-                    $location.url("/user/" + user._id);
-                })
-                .error(function (err) {
-                    vm.error = err;
-                });
+            if(!user || !user.username || !user.password){
+                vm.error = "Username/password cannot be empty"
+            }
+            else{
+                user.type = type;
+                UserService
+                    .login(user)
+                    .success(function (user) {
+                        vm.user = user;
+                        vm.uid = user._id;
+                        $rootScope.isLoggedIn = true;
+                        $location.url("/user/"+user._id);
+                    })
+                    .error(function (err) {
+                        vm.error = err;
+                    });
+            }
         }
     }
 
     function RegisterController($location, UserService, $rootScope) {
         var vm = this;
-        function register(user, type) {
-            user.type = type;
-            UserService
-                .register(user)
-                .then(function(response) {
-                    var user = response.data;
-                    $rootScope.currentUser = user;
-                    $location.url("/user/"+user._id);
-                });
-        }
         vm.register = register;
+
+        function register(user, type) {
+            if(!user || !user.username || !user.password || !user.password2 || (type == 'bus' && !user.buName)){
+                vm.error = "Username/password/name cannot be empty"
+            }else if(user.password != user.password2){
+                vm.error = "passwords don't match";
+            }
+            else {
+                user.type = type;
+                UserService
+                    .register(user)
+                    .success(function (response) {
+                        vm.uid = response._id;
+                        $rootScope.currentUser = response;
+                        $location.url("/user/"+response._id);
+                    })
+                    .error(function (res) {
+                        vm.error = res;
+                    });
+            }
+        }
+
     }
 
     function ProfileController($location, $routeParams, UserService, $rootScope) {
@@ -61,6 +92,7 @@
         }else{
             UserService.findUserById(userId)
                 .success(function (user) {
+                    vm.uid = user._id;
                     vm.user = user;
                 });
         }

@@ -5,18 +5,21 @@ module.exports = function() {
     var mongoose = require("mongoose");
     var UserSchema = mongoose.Schema({
         username: String,
-        password: String,
+        buName: String,
+        brName: String,
+        type: String,
+        password : String,
         firstName: String,
         lastName: String,
         email: String,
         phone: String,
-        websites: [{type: mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}],
+        branches: [{type: mongoose.Schema.Types.ObjectId, ref:'BranchModel'}],
         dateCreated: Date,
         facebook: {
             id:    String,
             token: String
         },
-        role: {type: String, enum: ['ADMIN', 'STUDENT', 'FACULTY']}
+        role: {type: String, enum: ['ADMIN', 'GENERAL']}
     }, {collection: "user"});
     return UserSchema;
 };

@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 require ("./ide/app.js")(app);
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-// var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 3001;
+//var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 app.listen(port, ipaddress);

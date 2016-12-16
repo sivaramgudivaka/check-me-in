@@ -9,7 +9,8 @@ body {
   width: 100%;
 }
 body {
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  /*font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;*/
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
 hr {
   border-color: #F05F40;
@@ -149,7 +150,7 @@ aside {
     color: #F05F40;
   }
 }
-header {
+header{
   position: relative;
   width: 100%;
   min-height: auto;
@@ -338,7 +339,7 @@ fieldset[disabled] .btn-default.active {
   color: white;
   background-color: #222222;
 }
-.btn-primary.orange{
+.btn-primary{
   color: white;
   background-color: #F05F40;
   border-color: #F05F40;
@@ -387,10 +388,11 @@ fieldset[disabled] .btn-primary.active {
   background-color: white;
 }
 .btn{
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  /*font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;*/
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
   border: none;
   /*border-radius: 300px;*/
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
 }
 .btn-xl {
@@ -417,9 +419,7 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
-.search-form {
-    border-radius: 30px 0px 0px 30px;
-}
+
 .search-btn {
    border-radius: 0px 30px 30px 0px;
     cursor:pointer;
@@ -449,4 +449,24 @@ div#OR {
     top: 40%;
     z-index: 1;
     background: #DFDFDF;
+}
+
+/* for typeahead*/
+.twitter-typeahead{
+  width: 97%;
+}
+.tt-dropdown-menu{
+  width: 102%;
+}
+input.typeahead.tt-query{ /* This is optional */
+  width: 300px !important;
+}
+.tt-menu.tt-open{
+  cursor : pointer;
+}
+.service-box{
+  max-width: 100%;
+}
+.modal-link{
+  cursor: pointer;
 }

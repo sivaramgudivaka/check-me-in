@@ -15,8 +15,8 @@
            ng-model="model.user.password2"
            class="form-control"
            placeholder="very password" required/>
-    <a class="btn btn-primary btn-block" ng-click="model.register(model.user, cust)">Register</a>
-    <a class="btn btn-danger  btn-block" href="#/cuLogin">Cancel</a>
+    <a class="btn btn-primary btn-block" style="background-color: #2e6da4;" ng-click="model.register(model.user, 'cust')">Register</a>
+    <a class="btn btn-danger  btn-block" href="#/">Cancel</a>
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>

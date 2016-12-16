@@ -34,6 +34,7 @@ module.exports = function(app, model) {
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
     app.post('/api/login', passport.authenticate('local'), login);
+    app.post('/api/isloggedin', isloggedin);
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.post('/api/user', createUser);
@@ -48,6 +49,10 @@ module.exports = function(app, model) {
             successRedirect: '/assignment/index.html#/user',
             failureRedirect: '/assignment/index.html#/login'
         }));
+
+    function isloggedin(req, res) {
+        res.send(req.isAuthenticated());
+    }
 
     function facebookStrategy(token, refreshToken, profile, done) {
         model
@@ -90,28 +95,36 @@ module.exports = function(app, model) {
     }
 
     function logout(req, res) {
-        req.logOut();
+        req.logout();
         res.send(200);
     }
 
     function register (req, res) {
         var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
         model
             .userModel
-            .createUser(user)
-            .then(function(user){
-                if(user){
-                    req.login(user, function(err) {
-                        if(err) {
-                            res.status(400).send(err);
-                        } else {
-                            res.json(user);
-                        }
-                    });
+            .findUserByUsername(user.username)
+            .then(function (nuser) {
+                if(nuser != null){
+                    res.status(400).send('user already exists');
+                }else{
+                    user.password = bcrypt.hashSync(user.password);
+                    model
+                        .userModel
+                        .createUser(user)
+                        .then(function(user){
+                            if(user){
+                                req.login(user, function(err) {
+                                    if(err) {
+                                        res.status(400).send(err);
+                                    } else {
+                                        res.json(user);
+                                    }
+                                });
+                            }
+                        });
                 }
-            }
-        );
+            });
     }
 
     function loggedin(req, res) {

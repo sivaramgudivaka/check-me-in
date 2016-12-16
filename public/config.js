@@ -36,6 +36,26 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/search", {
+                templateUrl: "views/search/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
+            .when("/:uid/check-in/:buName/:brName", {
+                templateUrl: "views/check-in/check-in.view.client.html",
+                controller: "CheckInController",
+                controllerAs: "model"
+            })
+            .when("/:uid/check-in/:buName/:brName/reviews", {
+                templateUrl: "views/review/review.view.client.html",
+                controller: "ReviewController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })///website

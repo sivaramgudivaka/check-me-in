@@ -2,7 +2,7 @@
 (function(){
     angular
         .module("CheckMeIn")
-        .factory("UserService", UserService);
+        .factory("SearchService", SearchService);
 
     function UserService($http) {
 
@@ -15,20 +15,15 @@
             findUserByUsername : findUserByUsername,
             findUserByCredentials : findUserByCredentials,
             updateUser : updateUser,
-            deleteUser : deleteUser,
-            isLoggedIn : isLoggedIn
+            deleteUser : deleteUser
         };
         return api;
-
-        function isLoggedIn() {
-            return $http.post("/api/isloggedin");
-        }
 
         function login(user) {
             return $http.post("/api/login", user);
         }
 
-        function logout() {
+        function logout(user) {
             return $http.post("/api/logout");
         }
 
