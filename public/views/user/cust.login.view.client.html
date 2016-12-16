@@ -26,8 +26,12 @@
         </div>
         <div class="modal-footer">
             <a href="#" data-dismiss="modal" class="btn">Close</a>
-            <a class="btn btn-primary" ng-click="model.login(model.user, cust)">Login</a>
+            <a class="btn btn-primary" ng-click="model.login(model.user, 'CUSTOMER')">Login</a>
             <a class="btn btn-primary" href="#/cuRegister">Register</a>
+            <a href="/auth/facebook" class="btn btn-primary">
+                <span class="fa fa-facebook"></span>
+                Facebook
+            </a>
         </div>
         <div ng-show="model.error" class="alert alert-danger" role="alert">
             {{model.error}}

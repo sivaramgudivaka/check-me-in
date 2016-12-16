@@ -1,8 +1,8 @@
 module.exports = function(app, model) {
 
     var facebookConfig = {
-        clientID     : 1827738324130086,
-        clientSecret : "68f5693ae6685b85684de512e604f592",
+        clientID     : 1601507116825605,
+        clientSecret : "0bda5e1115a18f091396d8984f779f8d",
         callbackURL  : "http://localhost:3000/auth/facebook/callback",
         profileFields: ['id', 'name', 'email']
     };
@@ -38,7 +38,6 @@ module.exports = function(app, model) {
     app.post('/api/logout', logout);
     app.post ('/api/register', register);
     app.post('/api/user', createUser);
-    app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
@@ -46,8 +45,8 @@ module.exports = function(app, model) {
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/assignment/index.html#/user',
-            failureRedirect: '/assignment/index.html#/login'
+            successRedirect: '/#/user',
+            failureRedirect: '/'
         }));
 
     function isloggedin(req, res) {
@@ -211,43 +210,12 @@ module.exports = function(app, model) {
             );
     }
 
-    function findUser(req, res) {
-        var params = req.params;
-        var query = req.query;
-        if(query.password && query.username) {
-            findUserByCredentials(req, res);
-        } else if(query.username) {
-            findUserByUsername(req, res);
-        }
-    }
-
-    function findUserByCredentials(req, res) {
-        var username = req.query.username;
-        var password = req.query.password;
-        model
-            .userModel
-            .findUserByCredentials(username, password)
-            .then(
-                function (user) {
-                    if(user) {
-                        res.json(user);
-                    } else {
-                        res.send('0');
-                    }
-                },
-                function (error) {
-                    res.sendStatus(400).send(error);
-                }
-            );
-    }
-
     function findUserByUsername(req, res) {
         var username = req.query.username;
         model
             .userModel
             .findUserByUsername(username)
-            .then(
-                function (users) {
+            .then(function (users) {
                     if(users) {
                         res.json(users[0]);
                     } else {
@@ -256,8 +224,7 @@ module.exports = function(app, model) {
                 },
                 function (error) {
                     res.sendStatus(400).send(error);
-                }
-            );
+                });
     }
 
     function findUserById(req, res) {

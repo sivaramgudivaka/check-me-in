@@ -12,7 +12,7 @@
         var vm = this;
         vm.login = login;
         vm.logout = logout;
-        vm.uid = 000;
+        vm.uid = "guest";
 
         function isLoggedIn() {
             UserService
@@ -39,7 +39,7 @@
                 vm.error = "Username/password cannot be empty"
             }
             else{
-                user.type = type;
+                user.role = type;
                 UserService
                     .login(user)
                     .success(function (user) {
@@ -66,7 +66,7 @@
                 vm.error = "passwords don't match";
             }
             else {
-                user.type = type;
+                user.role = type;
                 UserService
                     .register(user)
                     .success(function (response) {
@@ -89,6 +89,7 @@
 
         if ($location.url() == "/user"){
             vm.user = $rootScope.currentUser;
+            $rootScope.isLoggedIn = true;
         }else{
             UserService.findUserById(userId)
                 .success(function (user) {
@@ -99,7 +100,7 @@
 
         function updateUser(user) {
             UserService.updateUser(user);
-            $location.url("/user/" + user._id + "/website");
+            $location.url("/user/" + user._id + "/branch");
         }
     }
 })();

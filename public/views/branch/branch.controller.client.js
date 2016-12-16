@@ -5,9 +5,9 @@
     'use strict';
     angular
         .module("CheckMeIn")
-        .controller("SearchController", SearchController);
+        .controller("BranchController", BranchController);
 
-    function SearchController($routeParams) {
+    function BranchController($routeParams) {
         var vm = this;
         vm.results = [];
         vm.setBusiness = setBusiness;

@@ -10,9 +10,8 @@ module.exports = function () {
     var api = {
         createUser: createUser,
         findUserById: findUserById,
-        findUserByCredentials: findUserByCredentials,
         findUserByUsername: findUserByUsername,
-        findWebsitesForUser: findWebsitesForUser,
+        findAllBranchesForUser: findAllBranchesForUser,
         findUserByFacebookId: findUserByFacebookId,
         updateUser: updateUser,
         deleteUser: deleteUser,
@@ -24,10 +23,10 @@ module.exports = function () {
         model = _model;
     }
 
-    function findWebsitesForUser(userId) {
+    function findAllBranchesForUser(userId) {
         return UserModel
             .findById(userId)
-            .populate('websites')
+            .populate('branches')
             .exec();
     }
 
@@ -38,13 +37,6 @@ module.exports = function () {
     function deleteUser(userId) {
         return UserModel
             .remove({_id: userId});
-    }
-
-    function findUserByCredentials(username, password) {
-        return UserModel.findOne({
-            username: username,
-            password: password
-        });
     }
 
     function findUserByUsername(username) {

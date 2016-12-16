@@ -6,8 +6,6 @@ module.exports = function() {
     var UserSchema = mongoose.Schema({
         username: String,
         buName: String,
-        brName: String,
-        type: String,
         password : String,
         firstName: String,
         lastName: String,
@@ -19,7 +17,7 @@ module.exports = function() {
             id:    String,
             token: String
         },
-        role: {type: String, enum: ['ADMIN', 'GENERAL']}
+        role: {type: String, enum: ['BUSINESS', 'CUSTOMER']}
     }, {collection: "user"});
     return UserSchema;
 };

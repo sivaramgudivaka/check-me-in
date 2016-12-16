@@ -38,9 +38,14 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/search", {
-                templateUrl: "views/search/search.view.client.html",
-                controller: "SearchController",
+            .when("/user/:uid/branch", {
+                templateUrl: "views/branch/branch.view.client.html",
+                controller: "BranchController",
+                controllerAs: "model"
+            })
+            .when("/user", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
                 controllerAs: "model"
             })
             .when("/:uid/check-in/:buName/:brName", {
