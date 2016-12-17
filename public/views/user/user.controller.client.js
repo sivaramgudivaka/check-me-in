@@ -12,7 +12,7 @@
         var vm = this;
         vm.login = login;
         vm.logout = logout;
-        vm.uid = "guest";
+        vm.uid = 0;
 
         function isLoggedIn() {
             UserService
@@ -46,7 +46,7 @@
                         vm.user = user;
                         vm.uid = user._id;
                         $rootScope.isLoggedIn = true;
-                        $location.url("/user/"+user._id);
+                        $location.url((type=='BUSINESS'?'/b':'/')+"user/"+user._id);
                     })
                     .error(function (err) {
                         vm.error = err;
@@ -55,24 +55,52 @@
         }
     }
 
-    function RegisterController($location, UserService, $rootScope) {
+    function RegisterController($location, UserService, BranchService,  $rootScope) {
         var vm = this;
         vm.register = register;
 
         function register(user, type) {
-            if(!user || !user.username || !user.password || !user.password2 || (type == 'bus' && !user.buName)){
+            if(!user || !user.username || !user.password || !user.password2 || (type == 'BUSINESS' && !user.buName)){
                 vm.error = "Username/password/name cannot be empty"
             }else if(user.password != user.password2){
                 vm.error = "passwords don't match";
-            }
-            else {
+            }else{
                 user.role = type;
                 UserService
                     .register(user)
                     .success(function (response) {
                         vm.uid = response._id;
                         $rootScope.currentUser = response;
-                        $location.url("/user/"+response._id);
+                        if(type=='BUSINESS'){   //add branches
+                            UserService
+                                .findUserById(vm.uid)
+                                .then(function (nuser) {
+                                    var data = nuser.data;
+                                    BranchService
+                                        .geolocate()
+                                        .then(function (response) {
+                                            // data = {
+                                            //     "uid" : vm.uid,
+                                            //     "lat" : response.data.location.lat,
+                                            //     "lng" : response.data.location.lng,
+                                            //     "buName" : nuser.data.buName
+                                            // };
+                                            // data.uid = vm.uid;
+                                            nuser.data.lat = response.data.location.lat;
+                                            nuser.data.lng = response.data.location.lng;
+                                            // data.buName = nuser.data.buName;
+                                        });
+                                    BranchService
+                                        .populatebranches(nuser.data)
+                                        .then(function (r) {
+                                            console.log(r);
+                                            //$location.url((type=='BUSINESS'?'/b':'/')+"user/" + user._id + "/branch");
+                                        });
+                                });
+                            $location.url("/buser/"+response._id+"/branch");
+                        }
+                        else
+                            $location.url("/user/"+response._id);
                     })
                     .error(function (res) {
                         vm.error = res;
@@ -86,6 +114,7 @@
         var vm = this;
         var userId = $routeParams.uid;
         vm.updateUser = updateUser;
+        vm.logout = logout;
 
         if ($location.url() == "/user"){
             vm.user = $rootScope.currentUser;
@@ -98,9 +127,22 @@
                 });
         }
 
-        function updateUser(user) {
-            UserService.updateUser(user);
-            $location.url("/user/" + user._id + "/branch");
+        function updateUser(user, type) {
+            if(user.role == type){ //user cannot change roles!
+                var data = {};
+                UserService.updateUser(user);
+
+            }
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $rootScope.isLoggedIn = false;
+                    $location.url("/");
+                });
         }
     }
 })();

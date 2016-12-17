@@ -39,6 +39,7 @@ module.exports = function(app, model) {
     app.post ('/api/register', register);
     app.post('/api/user', createUser);
     app.get('/api/user/:uid', findUserById);
+    app.get('/api/user/:uid/branches', findAllBranchesForUser);
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
     app.get ('/api/loggedin', loggedin);
@@ -48,6 +49,15 @@ module.exports = function(app, model) {
             successRedirect: '/#/user',
             failureRedirect: '/'
         }));
+
+    function findAllBranchesForUser(req, res) {
+        model
+            .userModel
+            .findAllBranchesForUser(req.params.uid)
+            .then(function (response) {
+               res.json(response);
+            });
+    }
 
     function isloggedin(req, res) {
         res.send(req.isAuthenticated());

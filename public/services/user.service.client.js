@@ -13,7 +13,7 @@
             createUser : createUser,
             findUserById : findUserById,
             findUserByUsername : findUserByUsername,
-            findUserByCredentials : findUserByCredentials,
+            findAllBranchesForUser : findAllBranchesForUser,
             updateUser : updateUser,
             deleteUser : deleteUser,
             isLoggedIn : isLoggedIn
@@ -50,8 +50,8 @@
             return $http.get(url);
         }
 
-        function findUserByCredentials(username, password) {
-            var url = '/api/user?username='+username+'&password='+password;
+        function findAllBranchesForUser(uid) {
+            var url = '/api/user/'+uid+'/branches';
             return $http.get(url);
         }
 

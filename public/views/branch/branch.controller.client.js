@@ -7,16 +7,39 @@
         .module("CheckMeIn")
         .controller("BranchController", BranchController);
 
-    function BranchController($routeParams) {
+    function BranchController($routeParams, UserService, BranchService) {
         var vm = this;
         vm.results = [];
         vm.setBusiness = setBusiness;
+        vm.bbranches = [];
+        vm.geolocate = geolocate;
+        vm.nearsearch = nearsearch;
+        vm.coords = {};
+
+        function geolocate() {
+            BranchService
+                .geolocate()
+                .then(function (response) {
+                    vm.coords = response.data.location;
+                });
+        }
 
         function init() {
             vm.uid = $routeParams.uid;
+            UserService
+                .findAllBranchesForUser(vm.uid)
+                .then(function (response) {
+                   vm.bbranches = response.data.branches;
+                });
         }
 
         init();
+        geolocate();
+
+        function nearsearch() {
+            var data = vm.coords;
+
+        }
 
         function setBusiness() {
             var text = $('#searchText').val();
@@ -63,6 +86,9 @@
                 suggestion: Handlebars.compile('<p><a ng-click="{{name}}">{{name}}</a></p>')
             }
         });
+
+
+
     }
 
 })();

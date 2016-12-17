@@ -9,6 +9,7 @@ module.exports = function() {
         userFullName: String,
         phone: String,
         checkInTime: Date,
+        waitTime: Number
     }, {collection: "checkin"});
     return CheckInSchema;
 };

@@ -2,9 +2,9 @@
 (function(){
     angular
         .module("CheckMeIn")
-        .factory("SearchService", SearchService);
+        .factory("CheckInService", CheckInService);
 
-    function UserService($http) {
+    function CheckInService($http) {
 
         var api = {
             login : login,

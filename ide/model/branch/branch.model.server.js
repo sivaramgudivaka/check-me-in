@@ -12,8 +12,6 @@ module.exports = function () {
         findBranchById: findBranchById,
         updateBranch: updateBranch,
         deleteBranch: deleteBranch,
-        comments: [{type: mongoose.Schema.Types.ObjectId, ref:'CommentModel'}],
-        checkins: [{type: mongoose.Schema.Types.ObjectId, ref:'CheckInModel'}],
         findAllCommentsForBranch : findAllCommentsForBranch,
         findCheckinsForBranch : findCheckinsForBranch,
         setModel: setModel

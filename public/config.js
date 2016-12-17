@@ -38,6 +38,21 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/buser/:uid/", {
+                templateUrl: "views/user/bprofile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("/buser/:uid/branch", {
+                templateUrl: "views/branch/bus.select.view.client.html",
+                controller: "BranchController",
+                controllerAs: "model"
+            })
+            .when("/buser/:uid/branch/:brid", {
+                templateUrl: "views/branch/bus.home.view.client.html",
+                controller: "BranchController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/branch", {
                 templateUrl: "views/branch/branch.view.client.html",
                 controller: "BranchController",
