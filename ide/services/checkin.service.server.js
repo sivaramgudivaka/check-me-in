@@ -1,37 +1,7 @@
+/**
+ * Created by Sivaram on 12/18/16.
+ */
 module.exports = function(app, model) {
-
-    var facebookConfig = {
-        clientID     : 1601507116825605,
-        clientSecret : "0bda5e1115a18f091396d8984f779f8d",
-        callbackURL  : "http://localhost:3000/auth/facebook/callback",
-        profileFields: ['id', 'name', 'email']
-    };
-
-    process.env.FACEBOOK_CLIENT_ID = facebookConfig.clientID;
-    process.env.FACEBOOK_CLIENT_SECRET = facebookConfig.clientSecret;
-    process.env.FACEBOOK_CALLBACK_URL = facebookConfig.callbackURL;
-
-    var bcrypt = require("bcrypt-nodejs");
-    var passport = require('passport');
-    var LocalStrategy = require('passport-local').Strategy;
-    var FacebookStrategy = require('passport-facebook').Strategy;
-    var cookieParser = require('cookie-parser');
-    var session      = require('express-session');
-
-    app.use(session({
-        secret: 'this is the secret',
-        resave: true,
-        saveUninitialized: true
-    }));
-
-    app.use(cookieParser());
-    app.use(passport.initialize());
-    app.use(passport.session());
-    passport.serializeUser(serializeUser);
-    passport.use(new LocalStrategy(localStrategy));
-    passport.deserializeUser(deserializeUser);
-
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/isloggedin', isloggedin);
@@ -42,20 +12,13 @@ module.exports = function(app, model) {
     app.get('/api/user/:uid/branches', findAllBranchesForUser);
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
-    app.get ('/api/loggedin', loggedin);
-    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/#/user',
-            failureRedirect: '/'
-        }));
 
     function findAllBranchesForUser(req, res) {
         model
             .userModel
             .findAllBranchesForUser(req.params.uid)
             .then(function (user) {
-               res.json(user.branches);
+                res.json(user.branches);
             });
     }
 

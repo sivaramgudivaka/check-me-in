@@ -11,14 +11,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div style="text-align: center">
-                <h4 style="text-align: center"><b>MANAGE CHECK-IN</b></h4>
+                <h4 style="text-align: center"><b>MANAGE CHECK-INS</b></h4>
             </div>
-            <!--<a class="btn" ng-click="">MANAGE CHECK-IN</a>-->
         </div>
-
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>
 <!--
 <header>
@@ -52,10 +48,11 @@
 <!--</div>-->
 <!--</section>-->
 
-<section id="comments">
+<section id="checkin">
     <div class="container-fluid">
-        <div class="list-item" ng-repeat="item in model.checkins">
-            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{item.fullName}}</a>
+        <div class="list-item" ng-repeat="checkin in model.checkins">
+            {{$index}}
+            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{checkin.name}}</a>
             <a href="#/user/{{model.userId}}/website/{{website._id}}">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>

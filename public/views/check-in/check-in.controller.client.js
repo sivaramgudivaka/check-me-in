@@ -4,34 +4,81 @@
 (function(){
     angular
         .module("CheckMeIn")
-        .controller("CheckInController", CheckInController);
+        .controller("CustCheckInController", CustCheckInController)
+        .controller("BusCheckInController", BusCheckInController);
 
-    function CheckInController($location, $routeParams) {
+    function CustCheckInController(UserService, CheckInService, $location, $routeParams) {
         var vm = this;
-        vm.checkIn = checkIn;
+        vm.checkin = checkin;
+        vm.checkins = [];
 
         function init() {
             vm.uid = $routeParams.uid;
-            vm.buName = $routeParams.buName;
-            vm.brName = $routeParams.brName;
-            vm.uid = $routeParams.uid;
-            vm.time = new Date();
+            if(uid != 0){
+                UserService
+                    .findUserById(uid)
+                    .success(function (user) {
+                        vm.user = user;
+                    });
+            }
         }
-
         init();
 
-        function checkIn() {
-            console.log(vm.buName);
-            console.log(vm.brName);
-            console.log(vm.uid);
+        function checkin(uid) {
+            var brid = $routeParams.brid;
+            var data = {
+                uid : uid,
+                brid : brid
+            };
+            CheckInService
+                .createCheckIn(checkinId)
+                .success(function (branch) {
+                    vm.checkins = branch.checkins;
+                })
+                .error(function (err) {
+                    console.log(err);
+                });
+        }
+    }
+
+    function BusCheckInController(UserService, CheckInService, $routeParams) {
+        var vm = this;
+        vm.serveCheckIn = serveCheckIn;
+        vm.rejectCheckIn = rejectCheckIn;
+        vm.checkins = [];
+
+        function init() {
+            vm.uid = $routeParams.uid;
+            var brid = $routeParams.brid;
+            UserService
+                .findUserById(uid)
+                .success(function (user) {
+                    vm.user = user;
+                });
+            CheckInService
+                .findCheckinsForBranch(brid)
+                .success(function (branch) {
+                    vm.checkins = branch.checkins;
+                });
+        }
+        init();
+
+        function serveCheckIn(checkInId) {
+            CheckInService
+                .serveCheckIn(checkInId)
+                .success(function (branch) {
+                    vm.checkins = branch.checkins;
+                });
         }
 
-        vm.isLoggedIn = isLoggedIn;
-
-        function isLoggedIn() {
-            return false;
+        function rejectCheckIn(checkInId) {
+            CheckInService
+                .rejectCheckIn(checkInId)
+                .success(function (branch) {
+                    vm.checkins = branch.checkins;
+                });
         }
-
 
     }
+
 })();

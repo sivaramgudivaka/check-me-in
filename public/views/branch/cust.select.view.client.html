@@ -1,0 +1,58 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Home
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="text-align: center">
+                <h4 style="text-align: center"><b>REGISTER</b></h4>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<section id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <!--<h2 class="section-heading">At Your Service</h2>-->
+                <!--<hr class="primary">-->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" style="width: 100%">
+            <div class="text-center">
+                <div id="the-basics" class="service-box">
+                    <input type="text" class="typeahead form-control" id="searchText" placeholder="check in where?">
+                    <br><br>
+                    <a class="btn btn-primary" ng-click="model.setBusiness()">search</a><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center"  ng-repeat = "result in model.results" style="padding:20px;">
+                <div class="" style="border: 1px grey solid;">
+                    <!--<i class="fa fa-4x fa-diamond text-primary sr-icons"></i>-->
+                    <h3>{{result.name}}</h3>
+                    <p class="text-muted">{{result.addr}}</p>
+                    <h4>Distance : {{result.dist}}</h4>
+                    <h4>Check-Me-In Score : {{result.score}}</h4>
+                    <a class="btn" href="#/{{model.uid}}/check-in/{{result.name}}/{{result.branch}}">Check-In Here</a><br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

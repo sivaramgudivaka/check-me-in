@@ -1,0 +1,59 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Home
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="text-align: center">
+                <h4 style="text-align: center"><b>PROFILE</b></h4>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <br><br><br>
+    <form role="form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   ng-model="model.user.username"
+                   class="form-control"
+                   id="username"
+                   placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   ng-model="model.user.email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text"
+                   ng-model="model.user.firstName"
+                   class="form-control"
+                   id="first-name"
+                   placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text"
+                   ng-model="model.user.lastName"
+                   class="form-control"
+                   id="last-name"
+                   placeholder="Wonderland">
+        </div>
+    <a class="btn btn-primary btn-block btn-blue" ng-click="model.updateUser(model.user)">Update</a>
+    <a class="btn btn-primary btn-block" href="#/user/{{model.user._id}}/branch">Search</a>
+    <a class="btn btn-danger btn-block"  ng-click="model.logout()">Logout</a>
+    </form>
+</div>

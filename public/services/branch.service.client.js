@@ -8,13 +8,10 @@
         var api = {
             geolocate : geolocate,
             nearsearch : nearsearch,
-            populatebranches : populateBranches
-            /*createBranch: createBranch,
-            findBranchById: findBranchById,
-            updateBranch: updateBranch,
-            deleteBranch: deleteBranch,
-            findAllCommentsForBranch : findAllCommentsForBranch,
-            findCheckinsForBranch : findCheckinsForBranch*/
+            populatebranches : populateBranches,
+            createBranch: createBranch,
+            findBranchById: findBranchById
+            //findAllCommentsForBranch : findAllCommentsForBranch
         };
         return api;
 
@@ -28,6 +25,14 @@
 
         function populateBranches(data) {
             return $http.post('/api/populateBranches', data);
+        }
+
+        function createBranch(data) {
+            return $http.post('/api/createbranch', data);
+        }
+
+        function findBranchById(brid) {
+            return $http.get('/api/branch/'+brid);
         }
     }
 })();

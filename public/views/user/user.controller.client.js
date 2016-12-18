@@ -86,14 +86,12 @@
                                             };
                                             BranchService
                                                 .populatebranches(data)
-                                                .then(function (results) {
-                                                    console.log(results);
-                                                    //now add these branches to db
-                                                    //$location.url((type=='BUSINESS'?'/b':'/')+"user/" + user._id + "/branch");
+                                                .then(function (response) {
+                                                    if(response.status == "OK")
+                                                        $location.url((type=='BUSINESS'?'/b':'/')+"user/" + response._id + "/branch");
                                                 });
                                         });
                                 });
-                            $location.url("/buser/"+response._id+"/branch");
                         }
                         else
                             $location.url("/user/"+response._id);
@@ -126,8 +124,11 @@
         function updateUser(user, type) {
             if(user.role == type){ //user cannot change roles!
                 var data = {};
-                UserService.updateUser(user);
-
+                UserService
+                    .updateUser(user)
+                    .then(function () {
+                        $location.url((type=='BUSINESS'?'/b':'/')+"user/"+user._id);
+                    });
             }
         }
 

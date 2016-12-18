@@ -34,34 +34,42 @@
                 controllerAs: "model"
             })
             .when("/user/:uid", {
-                templateUrl: "views/user/profile.view.client.html",
+                templateUrl: "views/user/cust.profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin }
             })
             .when("/buser/:uid/", {
-                templateUrl: "views/user/bprofile.view.client.html",
+                templateUrl: "views/user/bus.profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin }
             })
             .when("/buser/:uid/branch", {
                 templateUrl: "views/branch/bus.select.view.client.html",
-                controller: "BranchController",
-                controllerAs: "model"
-            })
-            .when("/buser/:uid/branch/:brid", {
-                templateUrl: "views/branch/bus.home.view.client.html",
-                controller: "BranchController",
+                controller: "BusBranchController",
                 controllerAs: "model"
             })
             .when("/user/:uid/branch", {
-                templateUrl: "views/branch/branch.view.client.html",
-                controller: "BranchController",
+                templateUrl: "views/branch/cust.select.view.client.html",
+                controller: "CustBranchController",
+                controllerAs: "model"
+            })
+            .when("/buser/:uid/branch/:brid", {
+                templateUrl: "views/check-in/bus.checkin.view.client.html",
+                controller: "BusCheckInController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/branch/:brid", {
+                templateUrl: "views/check-in/cust.checkin.view.client.html",
+                controller: "CustCheckInController",
                 controllerAs: "model"
             })
             .when("/user", {
-                templateUrl: "views/user/profile.view.client.html",
+                templateUrl: "views/user/cust.profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin }
             })
             .when("/:uid/check-in/:buName/:brName", {
                 templateUrl: "views/check-in/check-in.view.client.html",
@@ -74,63 +82,7 @@
                 controllerAs: "model"
             })
             .when("/user/:uid", {
-                templateUrl: "views/user/profile.view.client.html",
-                controller: "ProfileController",
-                controllerAs: "model",
-                resolve: { loggedin: checkLoggedin }
-            })///website
-            .when("/user/:uid/website", {
-                templateUrl: "views/website/website-list.view.client.html",
-                controller: "WebsiteListController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/new", {
-                templateUrl: "views/website/website-new.view.client.html",
-                controller: "NewWebsiteController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid", {
-                templateUrl: "views/website/website-edit.view.client.html",
-                controller: "EditWebsiteController",
-                controllerAs: "model"
-            })//////page
-            .when("/user/:uid/website/:wid/page", {
-                templateUrl: "views/page/page-list.view.client.html",
-                controller: "PageListController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/new", {
-                templateUrl: "views/page/page-new.view.client.html",
-                controller: "NewPageController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/:pid", {
-                templateUrl: "views/page/page-edit.view.client.html",
-                controller: "EditPageController",
-                controllerAs: "model"
-            })/////widget
-            .when("/user/:uid/website/:wid/page/:pid/widget", {
-                templateUrl: "views/widget/widget-list.view.client.html",
-                controller: "WidgetListController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: "views/widget/widget-chooser.view.client.html",
-                controller: "NewWidgetController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
-                templateUrl: "views/widget/widget-edit.view.client.html",
-                controller: "EditWidgetController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new/:type", {
-                templateUrl: "views/widget/widget-new.view.client.html",
-                controller: "NewWidgetController",
-                controllerAs: "model"
-            })
-            .when ("/user", {
-                templateUrl: "views/user/profile.view.client.html",
+                templateUrl: "views/user/cust.profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }

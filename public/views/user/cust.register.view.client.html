@@ -1,4 +1,27 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Home
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="text-align: center">
+                <h4 style="text-align: center"><b>REGISTER</b></h4>
+            </div>
+            <!--<a class="btn" ng-click="">MANAGE CHECK-IN</a>-->
+        </div>
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 <div class="container">
+    <br><br><br>
     <h1>Register</h1>
     <input type="text"
            ng-model="model.user.username"
@@ -15,8 +38,7 @@
            ng-model="model.user.password2"
            class="form-control"
            placeholder="very password" required/>
-    <a class="btn btn-primary btn-block" style="background-color: #2e6da4;" ng-click="model.register(model.user, 'CUSTOMER')">Register</a>
-    <a class="btn btn-danger  btn-block" href="#/">Cancel</a>
+    <a class="btn btn-primary btn-block btn-blue" ng-click="model.register(model.user, 'CUSTOMER')">Register</a>
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>

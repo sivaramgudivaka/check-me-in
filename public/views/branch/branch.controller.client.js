@@ -5,16 +5,40 @@
     'use strict';
     angular
         .module("CheckMeIn")
-        .controller("BranchController", BranchController);
+        .controller("BusBranchController", BusBranchController)
+        .controller("CustBranchController", CustBranchController);
 
-    function BranchController($routeParams, UserService, BranchService) {
+    function BusBranchController($routeParams, UserService, BranchService) {
         var vm = this;
-        vm.results = [];
-        vm.setBusiness = setBusiness;
         vm.bbranches = [];
-        vm.geolocate = geolocate;
-        vm.nearsearch = nearsearch;
-        vm.coords = {};
+
+        function init() {
+            vm.uid = $routeParams.uid;
+            UserService
+                .findAllBranchesForUser(vm.uid)
+                .success(function (branches) {
+                   vm.bbranches = branches;
+                })
+                .error(function(msg){
+                    console.log(msg);
+                });
+        }
+        init();
+    }
+
+    function CustBranchController($routeParams, UserService, BranchService) {
+        var vm = this;
+        vm.checkinList = checkinList;
+
+        function init() {
+            checkinList();
+        }
+        init();
+
+        function checkinList() {
+            vm.checkins = [{name: "abc", link: "http://www.example1.com"},
+                {name: "nbc", link: "http://www.example2.com"}];
+        }
 
         function geolocate() {
             BranchService
@@ -28,18 +52,22 @@
             vm.uid = $routeParams.uid;
             UserService
                 .findAllBranchesForUser(vm.uid)
-                .then(function (response) {
-                   vm.bbranches = response.data.branches;
+                .success(function (branches) {
+                    vm.bbranches = branches;
+                })
+                .error(function(msg){
+                    console.log(msg);
                 });
         }
 
         init();
-        geolocate();
 
         function nearsearch() {
             var data = vm.coords;
 
         }
+
+
 
         function setBusiness() {
             var text = $('#searchText').val();
@@ -69,10 +97,10 @@
         source.initialize();
 
         $('#the-basics .typeahead').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            }, {
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
             name: 'matched-links',
             displayKey: 'name',
             source: source.ttAdapter(),
@@ -86,8 +114,6 @@
                 suggestion: Handlebars.compile('<p><a ng-click="{{name}}">{{name}}</a></p>')
             }
         });
-
-
 
     }
 

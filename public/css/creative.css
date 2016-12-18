@@ -477,3 +477,23 @@ input.typeahead.tt-query{ /* This is optional */
 .comments-list .media{
   border-bottom: 1px dotted #ccc;
 }
+.break-all{
+  word-wrap: break-word;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+}
+
+.branch-list{
+  border: 1px grey solid;
+  word-break: break-all;
+}
+
+.branch-list-outer-box{
+  padding: 20px;
+}
+
+.btn-blue{
+  background-color: #2e6da4;
+}

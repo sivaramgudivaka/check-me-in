@@ -18,8 +18,21 @@ module.exports = function () {
     };
     return api;
 
-    function createBranch(branch) {
-        return BranchModel.create(branch);
+    function createBranch(uid, branch) {
+        return BranchModel
+            .create(branch)
+            .then(function (branchObj) {
+                model.userModel
+                    .findUserById(uid)
+                    .then(function (userObj) {
+                        branchObj._user = userObj._id;
+                        branchObj.save();
+                        userObj.branches.push(branchObj);
+                        return userObj.save();
+                    }, function(error){
+                            console.log(error);
+                        });
+            });
     }
 
     function findBranchById(branchId) {
