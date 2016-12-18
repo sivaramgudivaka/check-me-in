@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1635349a-2e0d-4c2e-8d9a-1c308b30e523" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/check-in/cust.checkin.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/app.js" afterPath="$PROJECT_DIR$/ide/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/model/branch/branch.model.server.js" afterPath="$PROJECT_DIR$/ide/model/branch/branch.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/model/branch/branch.schema.server.js" afterPath="$PROJECT_DIR$/ide/model/branch/branch.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/model/checkin/checkin.model.server.js" afterPath="$PROJECT_DIR$/ide/model/checkin/checkin.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/model/checkin/checkin.schema.server.js" afterPath="$PROJECT_DIR$/ide/model/checkin/checkin.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/model/user/user.model.server.js" afterPath="$PROJECT_DIR$/ide/model/user/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/services/branch.service.server.js" afterPath="$PROJECT_DIR$/ide/services/branch.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/services/checkin.service.server.js" afterPath="$PROJECT_DIR$/ide/services/checkin.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/services/user.service.server.js" afterPath="$PROJECT_DIR$/ide/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/creative.css" afterPath="$PROJECT_DIR$/public/css/creative.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/home.html" afterPath="$PROJECT_DIR$/public/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/branch.service.client.js" afterPath="$PROJECT_DIR$/public/services/branch.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/checkin.service.client.js" afterPath="$PROJECT_DIR$/public/services/checkin.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/services/user.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/branch/branch.controller.client.js" afterPath="$PROJECT_DIR$/public/views/branch/branch.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/branch/cust.select.view.client.html" afterPath="$PROJECT_DIR$/public/views/branch/cust.select.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/check-in/bus.checkin.view.client.html" afterPath="$PROJECT_DIR$/public/views/check-in/bus.checkin.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js" afterPath="$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/cust.profile.view.client.html" afterPath="$PROJECT_DIR$/public/views/user/cust.profile.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/user.controller.client.js" afterPath="$PROJECT_DIR$/public/views/user/user.controller.client.js" />
     </list>
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +28,7 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
+            <state relative-caret-position="1037">
               <caret line="63" column="57" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
@@ -59,7 +37,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check-in.controller.client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="check-in.controller.client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="335">
@@ -152,7 +140,6 @@
         <option value="$PROJECT_DIR$/public/config.js" />
         <option value="$PROJECT_DIR$/public/views/branch/cust.select.view.client.html" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/home.html" />
         <option value="$PROJECT_DIR$/public/views/user/user.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/user/cust.profile.view.client.html" />
         <option value="$PROJECT_DIR$/public/css/creative.css" />
@@ -168,6 +155,7 @@
         <option value="$PROJECT_DIR$/public/views/check-in/bus.checkin.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/check-in/cust.checkin.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js" />
+        <option value="$PROJECT_DIR$/public/home.html" />
       </list>
     </option>
   </component>
@@ -616,12 +604,12 @@
       <updated>1481561778703</updated>
       <workItem from="1481561779948" duration="100578000" />
       <workItem from="1481949773253" duration="15547000" />
-      <workItem from="1481950917878" duration="67446000" />
+      <workItem from="1481950917878" duration="68342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183571000" />
+    <option name="totallyTimeSpent" value="184467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -633,7 +621,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.50292826" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.181388" sideWeight="0.49707174" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33123028" sideWeight="0.49707174" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -889,14 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/user/cust.profile.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -1023,9 +1003,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
+        <state relative-caret-position="1037">
           <caret line="63" column="57" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
@@ -1033,10 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/check-in/check-in.controller.client.js">
+    <entry file="file://$PROJECT_DIR$/public/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+        <state relative-caret-position="284">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
           <folding />
         </state>
       </provider>
