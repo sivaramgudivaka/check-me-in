@@ -14,6 +14,8 @@
             findUserById : findUserById,
             findUserByUsername : findUserByUsername,
             findAllBranchesForUser : findAllBranchesForUser,
+            findAllBusinessNames : findAllBusinessNames,
+            findBusinessByName : findBusinessByName,
             updateUser : updateUser,
             deleteUser : deleteUser,
             isLoggedIn : isLoggedIn
@@ -63,6 +65,14 @@
         function deleteUser(userId) {
             var url = "/api/user/" + uid;
             return $http.delete(url);
+        }
+
+        function findAllBusinessNames() {
+            return $http.get('/api/user/bnames');
+        }
+
+        function findBusinessByName(bname) {
+            return $http.get('/api/user/bname/'+bname);
         }
     }
 })();

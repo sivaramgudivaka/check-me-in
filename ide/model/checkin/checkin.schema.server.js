@@ -11,7 +11,6 @@ module.exports = function() {
         phone : String,
         checkInTime: Date,
         waitTime: Number,
-        status : String
     }, {collection: "checkin"});
     return CheckInSchema;
 };

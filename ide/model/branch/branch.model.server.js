@@ -10,10 +10,10 @@ module.exports = function () {
     var api = {
         createBranch: createBranch,
         findBranchById: findBranchById,
-        updateBranch: updateBranch,
+        updateWaitTime: updateWaitTime,
         deleteBranch: deleteBranch,
         findAllCommentsForBranch : findAllCommentsForBranch,
-        findCheckinsForBranch : findCheckinsForBranch,
+        findCheckInsForBranch : findCheckInsForBranch,
         setModel: setModel
     };
     return api;
@@ -39,9 +39,13 @@ module.exports = function () {
         return BranchModel.findById(branchId);
     }
 
-    function updateBranch(branchId, branch) {
+    function updateWaitTime(branchId) {
         return BranchModel
-            .update( {_id: branchId}, branch);
+            .findById(branchId)
+            .then(function (branchObj) {
+                branchObj.waitTime = branchObj.waitTime + 15;
+                return branchObj.save();
+            });
     }
 
     function deleteBranch(branchId) {
@@ -56,10 +60,10 @@ module.exports = function () {
             .exec();
     }
 
-    function findCheckinsForBranch(branchId) {
+    function findCheckInsForBranch(branchId) {
         return BranchModel
-            .findBranchById(branchId)
-            .populate("checkins")
+            .findById(branchId)
+            .populate('checkins')
             .exec();
     }
 

@@ -1,0 +1,69 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/user/{{model.uid}}/branch">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                SEARCH
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="text-align: center">
+                <h4 style="text-align: center"><b>BRANCH LIST</b></h4>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="mob-page">
+    <br><br><br><br>
+    <h2>{{model.user.buName}}</h2>
+    <div clas="row">
+        <h1>{{model.branch.name}}</h1>
+        <p>{{model.branch.address}}</p>
+        <p>{{model.branch.waitTime}}</p>
+    </div>
+        <div class="row container-fluid">
+            <div class="col-sm-8">
+                <form>
+                    <div class="form-group">
+                        <input type="text"
+                               ng-model="model.user.firstName"
+                               class="form-control"
+                               id="FirstName"
+                               placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                               ng-model="model.user.lastName"
+                               class="form-control"
+                               id="LastName"
+                               placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                               ng-model="model.user.phone"
+                               class="form-control"
+                               id="phone"
+                               placeholder="Phone Number">
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4 visible-xs">
+                <a class="btn btn-primary btn-block" ng-click="model.checkinHere(model.user)">Check-In!</a>
+                <a class="btn btn-primary btn-block btn-blue" href="#">Reviews/Comments</a>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+                <a class="btn btn-primary" ng-click="model.checkinHere(model.user)">Check-In!</a><br><br>
+                <a class="btn btn-primary btn-blue" href="#">Reviews/Comments</a>
+            </div>
+        </div>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div class="alert alert-success" ng-show="model.chkdin">
+        <strong>Successfully checked-in!</strong>
+    </div>
+</header>

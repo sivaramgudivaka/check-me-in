@@ -87,8 +87,8 @@
                                             BranchService
                                                 .populatebranches(data)
                                                 .then(function (response) {
-                                                    if(response.status == "OK")
-                                                        $location.url((type=='BUSINESS'?'/b':'/')+"user/" + response._id + "/branch");
+                                                    if(response.data.status == "OK")
+                                                        $location.url((type=='BUSINESS'?'/b':'/')+"user/" + vm.uid + "/branch");
                                                 });
                                         });
                                 });
@@ -123,12 +123,8 @@
 
         function updateUser(user, type) {
             if(user.role == type){ //user cannot change roles!
-                var data = {};
-                UserService
-                    .updateUser(user)
-                    .then(function () {
-                        $location.url((type=='BUSINESS'?'/b':'/')+"user/"+user._id);
-                    });
+                UserService.updateUser(user);
+                $location.url((type=='BUSINESS'?'/b':'/')+"user/"+user._id);
             }
         }
 

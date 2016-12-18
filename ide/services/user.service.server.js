@@ -33,6 +33,8 @@ module.exports = function(app, model) {
 
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
+    app.get('/api/user/bnames', findAllBusinessNames);
+    app.get('/api/user/bname/:bname', findBusinessByName);
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/isloggedin', isloggedin);
     app.post('/api/logout', logout);
@@ -56,6 +58,15 @@ module.exports = function(app, model) {
             .findAllBranchesForUser(req.params.uid)
             .then(function (user) {
                res.json(user.branches);
+            });
+    }
+
+    function findBusinessByName(req, res) {
+        model
+            .userModel
+            .findBusinessByName(req.params.bname)
+            .then(function (bname) {
+                res.json(bname);
             });
     }
 
@@ -253,5 +264,18 @@ module.exports = function(app, model) {
                     res.sendStatus(400).send(error);
                 }
             )
+    }
+
+    function findAllBusinessNames(req, res) {
+        model
+            .userModel
+            .findAllBusinessNames()
+            .then(function (users) {
+                if(users){
+                    res.send(users);
+                } else {
+                    res.send('0');
+                }
+            });
     }
 };

@@ -13,6 +13,8 @@ module.exports = function () {
         findUserByUsername: findUserByUsername,
         findAllBranchesForUser: findAllBranchesForUser,
         findUserByFacebookId: findUserByFacebookId,
+        findAllBusinessNames : findAllBusinessNames,
+        findBusinessByName : findBusinessByName,
         updateUser: updateUser,
         deleteUser: deleteUser,
         setModel: setModel
@@ -43,6 +45,14 @@ module.exports = function () {
         return UserModel.findOne({
             username: username
         });
+    }
+
+    function findAllBusinessNames() {
+        return UserModel.find({role : 'BUSINESS'});
+    }
+
+    function findBusinessByName(bname) {
+        return UserModel.findOne({buName : bname});
     }
 
     function updateUser(userId, user) {

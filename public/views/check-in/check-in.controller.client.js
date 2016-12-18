@@ -7,56 +7,71 @@
         .controller("CustCheckInController", CustCheckInController)
         .controller("BusCheckInController", BusCheckInController);
 
-    function CustCheckInController(UserService, CheckInService, $location, $routeParams) {
+    function CustCheckInController(UserService, CheckInService, BranchService, $routeParams) {
         var vm = this;
-        vm.checkin = checkin;
+        vm.checkinHere = checkinHere;
         vm.checkins = [];
 
         function init() {
             vm.uid = $routeParams.uid;
-            if(uid != 0){
+            vm.brid = $routeParams.brid;
+            if(vm.uid != 0) {
                 UserService
-                    .findUserById(uid)
+                    .findUserById(vm.uid)
                     .success(function (user) {
                         vm.user = user;
                     });
             }
+            BranchService
+                .findBranchById(vm.brid)
+                .success(function (branch) {
+                    vm.branch = branch;
+                });
         }
         init();
 
-        function checkin(uid) {
-            var brid = $routeParams.brid;
-            var data = {
-                uid : uid,
-                brid : brid
-            };
-            CheckInService
-                .createCheckIn(checkinId)
-                .success(function (branch) {
-                    vm.checkins = branch.checkins;
-                })
-                .error(function (err) {
-                    console.log(err);
-                });
+        function checkinHere(user) {
+            if(!user || !user.firstName || !user.lastName){
+                vm.error = "all the fields are required";
+                vm.chkdin = false;
+            }else{
+                var brid = $routeParams.brid;
+                var data = {
+                    uid : user._id,
+                    brid : brid,
+                    FirstName : user.firstName,
+                    LastName : user.lastName,
+                    phone : user.phone,
+                    checkInTime : new Date()
+                };
+                CheckInService
+                    .createCheckIn(data)
+                    .success(function (response) {
+                        vm.chkdin = true;
+                        vm.error = false;
+                    })
+                    .error(function (err) {
+                        console.log(err);
+                    });
+            }
         }
     }
 
-    function BusCheckInController(UserService, CheckInService, $routeParams) {
+    function BusCheckInController(UserService, BranchService, $routeParams) {
         var vm = this;
         vm.serveCheckIn = serveCheckIn;
-        vm.rejectCheckIn = rejectCheckIn;
         vm.checkins = [];
 
         function init() {
             vm.uid = $routeParams.uid;
             var brid = $routeParams.brid;
             UserService
-                .findUserById(uid)
+                .findUserById(vm.uid)
                 .success(function (user) {
                     vm.user = user;
                 });
-            CheckInService
-                .findCheckinsForBranch(brid)
+            BranchService
+                .findCheckInsForBranch(brid)
                 .success(function (branch) {
                     vm.checkins = branch.checkins;
                 });
@@ -65,15 +80,9 @@
 
         function serveCheckIn(checkInId) {
             CheckInService
-                .serveCheckIn(checkInId)
-                .success(function (branch) {
-                    vm.checkins = branch.checkins;
-                });
-        }
-
-        function rejectCheckIn(checkInId) {
-            CheckInService
-                .rejectCheckIn(checkInId)
+                .deleteCheckIn(checkInId);
+            BranchService
+                .findCheckInsForBranch(brid)
                 .success(function (branch) {
                     vm.checkins = branch.checkins;
                 });

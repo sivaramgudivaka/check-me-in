@@ -7,11 +7,11 @@
     function BranchService($http) {
         var api = {
             geolocate : geolocate,
-            nearsearch : nearsearch,
             populatebranches : populateBranches,
             createBranch: createBranch,
-            findBranchById: findBranchById
-            //findAllCommentsForBranch : findAllCommentsForBranch
+            findBranchById: findBranchById,
+            findAllCommentsForBranch : findAllCommentsForBranch,
+            findCheckInsForBranch : findCheckInsForBranch
         };
         return api;
 
@@ -19,20 +19,27 @@
             return $http.get('/api/geolocate');
         }
 
-        function nearsearch(data) {
-            return $http.post('/api/nearsearch', data);
-        }
-
         function populateBranches(data) {
             return $http.post('/api/populateBranches', data);
         }
 
         function createBranch(data) {
-            return $http.post('/api/createbranch', data);
+            return $http.post('/api/branch/create', data);
         }
 
         function findBranchById(brid) {
-            return $http.get('/api/branch/'+brid);
+            var url = '/api/branch/'+brid;
+            return $http.get(url);
+        }
+
+        function findAllCommentsForBranch(brid){
+            var url = '/api/branch/comments/' + brid;
+            return $http.get(url);
+        }
+
+        function findCheckInsForBranch(brid){
+            var url = '/api/branch/'+ brid + '/checkins';
+            return $http.get(url);
         }
     }
 })();

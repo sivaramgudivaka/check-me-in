@@ -8,6 +8,7 @@ module.exports = function() {
         name : String,
         address: String,
         comments: [{type: mongoose.Schema.Types.ObjectId, ref:'CommentModel'}],
+        checkins: [{type: mongoose.Schema.Types.ObjectId, ref:'CheckInModel'}],
         dateCreated: Date,
         waitTime : Number,
         queueNum : Number

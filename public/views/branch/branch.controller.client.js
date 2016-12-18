@@ -8,7 +8,7 @@
         .controller("BusBranchController", BusBranchController)
         .controller("CustBranchController", CustBranchController);
 
-    function BusBranchController($routeParams, UserService, BranchService) {
+    function BusBranchController($routeParams, UserService) {
         var vm = this;
         vm.bbranches = [];
 
@@ -26,72 +26,53 @@
         init();
     }
 
-    function CustBranchController($routeParams, UserService, BranchService) {
+    function CustBranchController($routeParams, UserService) {
         var vm = this;
-        vm.checkinList = checkinList;
-
-        function init() {
-            checkinList();
-        }
-        init();
-
-        function checkinList() {
-            vm.checkins = [{name: "abc", link: "http://www.example1.com"},
-                {name: "nbc", link: "http://www.example2.com"}];
-        }
-
-        function geolocate() {
-            BranchService
-                .geolocate()
-                .then(function (response) {
-                    vm.coords = response.data.location;
-                });
-        }
+        vm.findBusiness = findBusiness;
 
         function init() {
             vm.uid = $routeParams.uid;
             UserService
-                .findAllBranchesForUser(vm.uid)
-                .success(function (branches) {
-                    vm.bbranches = branches;
+                .findUserById(vm.uid)
+                .success(function (user) {
+                    vm.user = user;
                 })
-                .error(function(msg){
+                .error(function (msg) {
+                    console.log(msg);
+                });
+        }
+        init();
+
+        function findBusiness(searchText) {
+            UserService
+                .findBusinessByName(searchText)
+                .success(function (business) {
+                    if(business)
+                        findBranches(business._id);
+                    else
+                        vm.branches = [];
+                })
+                .error(function (msg) {
                     console.log(msg);
                 });
         }
 
-        init();
-
-        function nearsearch() {
-            var data = vm.coords;
-
+        function findBranches(buid) {
+            UserService
+                .findAllBranchesForUser(buid)
+                .success(function (branches) {
+                    vm.branches = branches;
+                });
         }
 
 
-
-        function setBusiness() {
-            var text = $('#searchText').val();
-            if(!text)
-                vm.results= [];
-            else{
-                var item ={
-                    "name" : text,
-                    "addr" : "75 peterborough st, Boston, MA, 02215",
-                    "dist": 2,
-                    "branch" : 1
-                };
-                vm.bName = text;
-                vm.results.push(item);
-            }
-        }
-
-        var links = [{name: "abc", link: "http://www.example1.com"},
+      /*  var links = [{name: "abc", link: "http://www.example1.com"},
             {name: "nbc", link: "http://www.example2.com"}];
 
         var source = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('buName'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: links
+            local: vm.results
         });
 
         source.initialize();
@@ -114,6 +95,21 @@
                 suggestion: Handlebars.compile('<p><a ng-click="{{name}}">{{name}}</a></p>')
             }
         });
+
+
+        function setBusiness() {
+            var text = $('#searchText').val();
+            if(!text)
+                vm.results= [];
+            else{
+                var item ={
+                    "name" : text,
+                    "addr" : "75 peterborough st, Boston, MA, 02215",
+                    "dist": 2,
+                    "branch" : 1
+                };
+            }
+        }*/
 
     }
 

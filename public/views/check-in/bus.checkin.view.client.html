@@ -51,8 +51,8 @@
 <section id="checkin">
     <div class="container-fluid">
         <div class="list-item" ng-repeat="checkin in model.checkins">
-            {{$index}}
-            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{checkin.name}}</a>
+            {{$index+1}}
+            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{checkin.FirstName}} {{checkin.LastName}}</a>
             <a href="#/user/{{model.userId}}/website/{{website._id}}">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
