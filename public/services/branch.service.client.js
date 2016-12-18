@@ -22,13 +22,11 @@
             return $http.get('/api/geolocate');
         }
 
-
         function nearsearch(data) {
             return $http.post('/api/nearsearch', data);
         }
 
         function populateBranches(data) {
-            console.log(data);
             return $http.post('/api/populateBranches', data);
         }
     }

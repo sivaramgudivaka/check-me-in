@@ -75,26 +75,22 @@
                             UserService
                                 .findUserById(vm.uid)
                                 .then(function (nuser) {
-                                    var data = nuser.data;
                                     BranchService
                                         .geolocate()
                                         .then(function (response) {
-                                            // data = {
-                                            //     "uid" : vm.uid,
-                                            //     "lat" : response.data.location.lat,
-                                            //     "lng" : response.data.location.lng,
-                                            //     "buName" : nuser.data.buName
-                                            // };
-                                            // data.uid = vm.uid;
-                                            nuser.data.lat = response.data.location.lat;
-                                            nuser.data.lng = response.data.location.lng;
-                                            // data.buName = nuser.data.buName;
-                                        });
-                                    BranchService
-                                        .populatebranches(nuser.data)
-                                        .then(function (r) {
-                                            console.log(r);
-                                            //$location.url((type=='BUSINESS'?'/b':'/')+"user/" + user._id + "/branch");
+                                            var data = {
+                                                uid: vm.uid,
+                                                buName: nuser.data.buName,
+                                                lat: response.data.location.lat,
+                                                lng: response.data.location.lng
+                                            };
+                                            BranchService
+                                                .populatebranches(data)
+                                                .then(function (results) {
+                                                    console.log(results);
+                                                    //now add these branches to db
+                                                    //$location.url((type=='BUSINESS'?'/b':'/')+"user/" + user._id + "/branch");
+                                                });
                                         });
                                 });
                             $location.url("/buser/"+response._id+"/branch");
