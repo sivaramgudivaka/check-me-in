@@ -51,20 +51,21 @@
                         vm.error = false;
                     })
                     .error(function (err) {
-                        console.log(err);
+                        vm.error = "You've already checkd in";
                     });
             }
         }
     }
 
-    function BusCheckInController(UserService, BranchService, $routeParams) {
+    function BusCheckInController(UserService, BranchService, CheckInService, $routeParams) {
         var vm = this;
         vm.serveCheckIn = serveCheckIn;
         vm.checkins = [];
+        var brid;
 
         function init() {
             vm.uid = $routeParams.uid;
-            var brid = $routeParams.brid;
+            brid = $routeParams.brid;
             UserService
                 .findUserById(vm.uid)
                 .success(function (user) {

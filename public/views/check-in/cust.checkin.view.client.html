@@ -33,6 +33,7 @@
                                ng-model="model.user.firstName"
                                class="form-control"
                                id="FirstName"
+                               ng-disabled="model.chkdin"
                                placeholder="First Name">
                     </div>
                     <div class="form-group">
@@ -40,6 +41,7 @@
                                ng-model="model.user.lastName"
                                class="form-control"
                                id="LastName"
+                               ng-disabled="model.chkdin"
                                placeholder="Last Name">
                     </div>
                     <div class="form-group">
@@ -47,17 +49,18 @@
                                ng-model="model.user.phone"
                                class="form-control"
                                id="phone"
+                               ng-disabled="model.chkdin"
                                placeholder="Phone Number">
                     </div>
 
                 </form>
             </div>
             <div class="col-sm-4 visible-xs">
-                <a class="btn btn-primary btn-block" ng-click="model.checkinHere(model.user)">Check-In!</a>
+                <a ng-hide = "model.chkdin" class="btn btn-primary btn-block" ng-click="model.checkinHere(model.user)">Check-In!</a>
                 <a class="btn btn-primary btn-block btn-blue" href="#">Reviews/Comments</a>
             </div>
             <div class="col-sm-4 hidden-xs">
-                <a class="btn btn-primary" ng-click="model.checkinHere(model.user)">Check-In!</a><br><br>
+                <a ng-hide = "model.chkdin" class="btn btn-primary" ng-click="model.checkinHere(model.user)">Check-In!</a><br><br>
                 <a class="btn btn-primary btn-blue" href="#">Reviews/Comments</a>
             </div>
         </div>

@@ -16,45 +16,14 @@
         </div>
     </div>
 </nav>
-<!--
-<header>
-    <div class="header-content">
-        <div class="header-content-inner">
-            <h1 id="homeHeading">Your Favorite stop for quick online check-in</h1>
-            <hr>
-            <p>Check in to your pharmacy, salon or any other businesses partnering with our service.</p>
-            &lt;!&ndash;<p>Check Me In puts businesses first! Create a business account to get started.</p>&ndash;&gt;
-            &lt;!&ndash;<a href="#check-me-in" class="btn btn-primary btn-xl page-scroll">Check Me In</a>&ndash;&gt;
-            &lt;!&ndash;<a href="#" class="btn btn-primary btn-xl page">Check Me In</a>&ndash;&gt;
-            &lt;!&ndash;<a class="btn btn-primary btn-xl page-scroll" href="#branch">Check In</a>&ndash;&gt;
-            <a class="btn btn-primary btn-xl" href="#/user/{{model.uid}}/branch">Check In</a>
-        </div>
-    </div>
-
-</header>
--->
 
 
-<!--<div class="container" ng-repeat = "result in model.results">-->
-<!--<div class="row">-->
-<!--<div class="col-lg-3 col-md-6 text-center">-->
-<!--<div class="service-box">-->
-<!--<i class="fa fa-4x fa-diamond text-primary sr-icons"></i>-->
-<!--<h3>{{result}}</h3>-->
-<!--<p class="text-muted">Our templates are updated regularly so they don't break.</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-
-<section id="checkin">
+<section id="checkin" class="semi-top-padding">
     <div class="container-fluid">
+        <h3>click on anyone to serve</h3>
         <div class="list-item" ng-repeat="checkin in model.checkins">
-            {{$index+1}}
-            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">{{checkin.FirstName}} {{checkin.LastName}}</a>
-            <a href="#/user/{{model.userId}}/website/{{website._id}}">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
+            <a ng-click="model.serveCheckIn(checkin._id)" class="mouse-pointer">
+                {{$index+1}}. {{checkin.FirstName}} {{checkin.LastName}}
             </a>
         </div>
     </div>

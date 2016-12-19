@@ -525,3 +525,9 @@ input.typeahead.tt-query{ /* This is optional */
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.mouse-pointer{
+  cursor : pointer;
+}
+.semi-top-padding{
+  padding-top:50px;
+}

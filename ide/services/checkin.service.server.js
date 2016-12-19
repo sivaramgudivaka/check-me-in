@@ -9,15 +9,36 @@ module.exports = function(app, model) {
 
     function createCheckIn(req, res) {
         var data = req.body;
+        // model
+        //     .checkInModel
+        //     .createCheckIn(data)
+        //     .then(function(checkin) {
+        //             res.send(checkin);
+        //         },
+        //         function (error) {
+        //             res.sendStatus(400).send(error);
+        //         });
         model
             .checkInModel
-            .createCheckIn(data)
-            .then(function(checkin) {
-                    res.send(checkin);
-                },
-                function (error) {
-                    res.sendStatus(400).send(error);
-                });
+            .findCheckInByPhone(data.phone)
+            .then(function (checkin) {
+                if(checkin != null)
+                    res.sendStatus(400).send("you've already checked-in");
+                else {
+                    model.checkInModel
+                        .createCheckIn(data)
+                        .then(function (checkin) {
+                                res.send(checkin);
+                            },
+                            function (error) {
+                                res.sendStatus(400).send(error);
+                            });
+                }
+            });
+            // ,
+            //     function (error) {
+            //         res.send(error);
+            //     });
     }
 
     function findCheckInById(req, res) {

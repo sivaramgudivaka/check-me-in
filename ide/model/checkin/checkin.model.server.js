@@ -11,11 +11,13 @@ module.exports = function () {
         createCheckIn: createCheckIn,
         findCheckInById: findCheckInById,
         deleteCheckIn: deleteCheckIn,
+        findCheckInByPhone : findCheckInByPhone,
         setModel: setModel
     };
     return api;
 
     function createCheckIn(data) {
+
         return CheckInModel
             .create(data)
             .then(function (checkInObj) {
@@ -36,6 +38,10 @@ module.exports = function () {
 
     function findCheckInById(checkInId) {
         return CheckInModel.findById(checkInId);
+    }
+
+    function findCheckInByPhone(phone) {
+        return CheckInModel.findOne({phone:phone});
     }
 
     function deleteCheckIn(checkInId) {
