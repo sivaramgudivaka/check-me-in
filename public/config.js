@@ -71,14 +71,9 @@
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
-            .when("/:uid/check-in/:buName/:brName", {
-                templateUrl: "views/check-in/check-in.view.client.html",
-                controller: "CheckInController",
-                controllerAs: "model"
-            })
-            .when("/:uid/check-in/:buName/:brName/reviews", {
-                templateUrl: "views/review/review.view.client.html",
-                controller: "ReviewController",
+            .when("/user/:uid/branch/:brid/comments", {
+                templateUrl: "views/comment/cust.comment.view.client.html",
+                controller: "CommentController",
                 controllerAs: "model"
             })
             .when("/user/:uid", {

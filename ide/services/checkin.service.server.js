@@ -9,15 +9,6 @@ module.exports = function(app, model) {
 
     function createCheckIn(req, res) {
         var data = req.body;
-        // model
-        //     .checkInModel
-        //     .createCheckIn(data)
-        //     .then(function(checkin) {
-        //             res.send(checkin);
-        //         },
-        //         function (error) {
-        //             res.sendStatus(400).send(error);
-        //         });
         model
             .checkInModel
             .findCheckInByPhone(data.phone)
@@ -35,10 +26,6 @@ module.exports = function(app, model) {
                             });
                 }
             });
-            // ,
-            //     function (error) {
-            //         res.send(error);
-            //     });
     }
 
     function findCheckInById(req, res) {

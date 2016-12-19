@@ -55,7 +55,7 @@ module.exports = function () {
 
     function findAllCommentsForBranch(branchId) {
         return BranchModel
-            .findBranchById(branchId)
+            .findById(branchId)
             .populate("comments")
             .exec();
     }
@@ -63,7 +63,7 @@ module.exports = function () {
     function findCheckInsForBranch(branchId) {
         return BranchModel
             .findById(branchId)
-            .populate('checkins')
+            .populate("checkins")
             .exec();
     }
 

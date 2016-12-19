@@ -8,14 +8,14 @@ module.exports = function(app, model) {
     app.get('/api/branch/:brid', findBranchById);
     app.post('/api/branch/create', createBranch);
     app.post('/api/branch/:brid/updateWait', updateWaitTime);
-    app.get('/api/branch/comments', findAllCommentsForBranch);
+    app.get('/api/branch/:brid/comments', findAllCommentsForBranch);
     app.get('/api/branch/:brid/checkins', findCheckInsForBranch);
 
     function findAllCommentsForBranch(req, res) {
         model.branchModel
             .findBranchById(req.params.brid)
             .then(function (branch) {
-                res.json(branch.comments);
+                res.json(branch);
             });
     }
 
@@ -33,8 +33,8 @@ module.exports = function(app, model) {
         model
             .branchModel
             .findCheckInsForBranch(req.params.brid)
-            .then(function (checkins) {
-                res.json(checkins);
+            .then(function (branch) {
+                res.json(branch);
             });
     }
 

@@ -61,7 +61,7 @@
             </div>
             <div class="col-sm-4 hidden-xs">
                 <a ng-hide = "model.chkdin" class="btn btn-primary" ng-click="model.checkinHere(model.user)">Check-In!</a><br><br>
-                <a class="btn btn-primary btn-blue" href="#">Reviews/Comments</a>
+                <a class="btn btn-primary btn-blue" href="#/user/{{model.uid}}/branch/{{model.brid}}/comments">Reviews/Comments</a>
             </div>
         </div>
     <div ng-show="model.error" class="alert alert-danger" role="alert">

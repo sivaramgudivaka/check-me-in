@@ -10,36 +10,36 @@ module.exports = function () {
     var api = {
         createComment: createComment,
         findCommentById: findCommentById,
-        deleteComment: deleteComment,
         setModel: setModel
     };
 
     return api;
 
     function createComment(comment) {
-        return CommentModel.create(comment);
+        return CommentModel
+            .create(comment)
+            .then(function(commentObj){
+                model.branchModel
+                    .findBranchById(comment.branch)
+                    .then(function(branchObj){
+                        model.userModel
+                            .findUserById(comment.user)
+                            .then(function (userObj) {
+                                commentObj._user = userObj._id;
+                                commentObj._branch = branchObj._id;
+                                commentObj.save();
+                                branchObj.comments.push(commentObj);
+                                return branchObj.save();
+                            });
+
+                    }, function(error){
+                        console.log(error);
+                    });
+            });
     }
 
     function findCommentById(commentId) {
         return CommentModel.findById(commentId);
-    }
-
-    function deleteComment(commentId) {
-        return CommentModel
-            .findById(commentId)
-            .then(function (comment) {
-                model.branchModel
-                    .findBranchById(comment._branch)
-                    .then(function (branchObj) {
-                        var comments = branchObj.comments;
-                        var index = comments.indexOf(commentId);
-                        comments.splice(index, 1);
-                        branchObj.comments = comments;
-                        branchObj.save();
-                        return CommentModel
-                            .remove({_id: commentId});
-                    });
-            });
     }
 
     function setModel(_model) {

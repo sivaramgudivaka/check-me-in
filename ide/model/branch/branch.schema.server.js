@@ -11,7 +11,6 @@ module.exports = function() {
         checkins: [{type: mongoose.Schema.Types.ObjectId, ref:'CheckInModel'}],
         dateCreated: Date,
         waitTime : Number,
-        queueNum : Number
     }, {collection: "branch"});
     return BranchSchema;
 };

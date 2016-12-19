@@ -1,12 +1,5 @@
 module.exports = function(app, model) {
 
-    // var facebookConfig = {
-    //     clientID     : 1601507116825605,
-    //     clientSecret : "0bda5e1115a18f091396d8984f779f8d",
-    //     callbackURL  : "http://localhost:3000/auth/facebook/callback",
-    //     profileFields: ['id', 'name', 'email']
-    // };
-
     var authKeys = require('../api.key');
 
     process.env.FACEBOOK_CLIENT_ID = authKeys.facebookConfig.clientID;

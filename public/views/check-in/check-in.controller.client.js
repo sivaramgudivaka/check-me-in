@@ -10,7 +10,6 @@
     function CustCheckInController(UserService, CheckInService, BranchService, $routeParams) {
         var vm = this;
         vm.checkinHere = checkinHere;
-        vm.checkins = [];
 
         function init() {
             vm.uid = $routeParams.uid;
@@ -74,6 +73,7 @@
             BranchService
                 .findCheckInsForBranch(brid)
                 .success(function (branch) {
+                    console.log(branch);
                     vm.checkins = branch.checkins;
                 });
         }

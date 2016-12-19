@@ -1,0 +1,85 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/user/{{model.uid}}/branch/{{model.brid}}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                CHECK-IN
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="text-align: center">
+                <h4 style="text-align: center"><b>REVIEWS FOR THIS BRANCH</b></h4>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--<section class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-8">-->
+            <!--<div class="page-header">-->
+                <!--<h1><small class="pull-right hidden-xs">{{model.comments.length}} comments</small> Comments </h1>-->
+            <!--</div>-->
+            <!--<div class="comments-list" ng-repeat="comment in model.comments">-->
+                <!--<div class="media">-->
+                    <!--<p class="pull-right"><small>{{model.formatDate(comment.date)}}</small></p>-->
+                    <!--<div class="media-body">-->
+                        <!--<h4 class="media-heading user_name">{{model.user.firstName}} {{model.user.lastName}}</h4>-->
+                        <!--{{comment.text}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<textarea class="form-control" rows="3" ng-model="model.comment" placeholder="comment.."></textarea>-->
+                <!--<a ng-click="model.postComment(model.comment)" class="mouse-pointer">Comment</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+<section>
+    <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2 class="section-heading">{{model.branch.name}}</h2>
+        <!--<hr class="light">-->
+        <p class="text-muted">{{model.branch.address}}</p>
+    </div>
+    <br><br>
+    <div class="detailBox">
+        <div class="titleBox">
+            <label>Comment Box</label>
+        </div>
+        <div class="commentBox">
+            <p class="taskDescription">Write your comments/reviews here</p>
+        </div>
+        <div class="actionBox">
+            <ul class="commentList">
+                <li ng-repeat="comment in model.comments" >
+                    <div class="commenterImage">
+                        <img src="http://lorempixel.com/50/50" />
+                    </div>
+                    <div class="commenttext">
+                        <p class="">{{comment.text}}</p>
+                        By<span class="date sub-text">
+                          {{model.user.firstName}} {{model.user.lastName}}
+                        </span>
+                        <!--<span class="date sub-text">{{formatDate(comment.dateCreated)}}</span>-->
+                        <span class="date sub-text">{{model.formatDate(comment.dateCreated)}}</span>
+                    </div>
+                </li>
+            </ul>
+            <form class="form" role="form">
+                <div class="form-group">
+                    <textarea class="form-control" ng-model="model.commentText" placeholder="COMMENTS.." ></textarea>
+                </div>
+                <!--<div class="form-group">-->
+                    <button class="btn btn-primary btn-block" ng-click="model.postComment(model.commentText)">Add</button>
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+</section>

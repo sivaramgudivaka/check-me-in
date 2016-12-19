@@ -32,22 +32,11 @@
 
         function init() {
             vm.uid = $routeParams.uid;
+            vm.brid = $routeParams.brid;
             if(vm.uid == 0){ //guest
                 vm.user = $rootScope.currentUser;
             }
             else{
-                // UserService
-                //     .findUserById(vm.uid)
-                //     .success(function (user) {
-                //         console.log(user);
-                //         vm.user = user;
-                //     })
-                //     .error(function (msg) {
-                //         console.log(msg);
-                //     });
-                // if(vm.user.role == 'BUSINESS')
-                //     $location.url('/');
-                // }
                 UserService
                     .findUserById(vm.uid)
                     .then(function (response) {
@@ -56,8 +45,7 @@
                             $location.url('/');
                     });
             }
-            }
-
+        }
         init();
 
         function findBusiness(searchText) {

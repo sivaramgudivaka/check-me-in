@@ -6,4 +6,5 @@ module.exports = function(app) {
     require("./services/user.service.server.js")(app, model);
     require("./services/branch.service.server.js")(app, model);
     require("./services/checkin.service.server.js")(app, model);
+    require("./services/comment.service.server.js")(app, model);
 };

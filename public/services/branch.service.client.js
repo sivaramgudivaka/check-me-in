@@ -33,7 +33,7 @@
         }
 
         function findAllCommentsForBranch(brid){
-            var url = '/api/branch/comments/' + brid;
+            var url = '/api/branch/'+brid+'/comments';
             return $http.get(url);
         }
 
