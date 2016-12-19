@@ -86,6 +86,7 @@
                                                 lat: response.data.location.lat,
                                                 lng: response.data.location.lng
                                             };
+                                            console.log(data);
                                             BranchService
                                                 .populatebranches(data)
                                                 .then(function (response) {
@@ -93,7 +94,7 @@
                                                         $location.url((type=='BUSINESS'?'/b':'/')+"user/" + vm.uid + "/branch");
                                                     else {
                                                         vm.loader = '';
-                                                        vm.error = "Invalid Busniess Name!";
+                                                        vm.error = "Invalid Business Name!";
                                                     }
                                                 });
                                         });
