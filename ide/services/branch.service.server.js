@@ -73,6 +73,7 @@ module.exports = function(app, model) {
 
     function addBranches(req, res){
         var branches = req.results;
+        console.log(branches);
         for(var i in branches){
             var branch = branches[i];
             if(branch.permanently_closed != 'true'){

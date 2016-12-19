@@ -86,7 +86,6 @@
                                                 lat: response.data.location.lat,
                                                 lng: response.data.location.lng
                                             };
-                                            console.log(data);
                                             BranchService
                                                 .populatebranches(data)
                                                 .then(function (response) {
