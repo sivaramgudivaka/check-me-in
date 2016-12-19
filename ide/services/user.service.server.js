@@ -1,15 +1,17 @@
 module.exports = function(app, model) {
 
-    var facebookConfig = {
-        clientID     : 1601507116825605,
-        clientSecret : "0bda5e1115a18f091396d8984f779f8d",
-        callbackURL  : "http://localhost:3000/auth/facebook/callback",
-        profileFields: ['id', 'name', 'email']
-    };
+    // var facebookConfig = {
+    //     clientID     : 1601507116825605,
+    //     clientSecret : "0bda5e1115a18f091396d8984f779f8d",
+    //     callbackURL  : "http://localhost:3000/auth/facebook/callback",
+    //     profileFields: ['id', 'name', 'email']
+    // };
 
-    process.env.FACEBOOK_CLIENT_ID = facebookConfig.clientID;
-    process.env.FACEBOOK_CLIENT_SECRET = facebookConfig.clientSecret;
-    process.env.FACEBOOK_CALLBACK_URL = facebookConfig.callbackURL;
+    var authKeys = require('../api.key');
+
+    process.env.FACEBOOK_CLIENT_ID = authKeys.facebookConfig.clientID;
+    process.env.FACEBOOK_CLIENT_SECRET = authKeys.facebookConfig.clientSecret;
+    process.env.FACEBOOK_CALLBACK_URL = authKeys.facebookConfig.callbackURL;
 
     var bcrypt = require("bcrypt-nodejs");
     var passport = require('passport');
@@ -31,7 +33,7 @@ module.exports = function(app, model) {
     passport.use(new LocalStrategy(localStrategy));
     passport.deserializeUser(deserializeUser);
 
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+    passport.use(new FacebookStrategy(authKeys.facebookConfig, facebookStrategy));
 
     app.get('/api/user/bnames', findAllBusinessNames);
     app.get('/api/user/bname/:bname', findBusinessByName);
