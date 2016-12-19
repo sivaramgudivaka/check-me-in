@@ -26,21 +26,29 @@
         init();
     }
 
-    function CustBranchController($routeParams, UserService) {
+    function CustBranchController($routeParams, $rootScope, $location, UserService) {
         var vm = this;
         vm.findBusiness = findBusiness;
 
         function init() {
             vm.uid = $routeParams.uid;
-            UserService
-                .findUserById(vm.uid)
-                .success(function (user) {
-                    vm.user = user;
-                })
-                .error(function (msg) {
-                    console.log(msg);
-                });
-        }
+            if(vm.uid == 0){ //guest
+                vm.user = $rootScope.currentUser;
+            }
+            else{
+                UserService
+                    .findUserById(vm.uid)
+                    .success(function (user) {
+                        vm.user = user;
+                    })
+                    .error(function (msg) {
+                        console.log(msg);
+                    });
+                if(vm.user.role == 'BUSINESS')
+                    $location.url('/');
+                }
+            }
+
         init();
 
         function findBusiness(searchText) {

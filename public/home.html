@@ -10,19 +10,6 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!--<div class="col-sm-3 col-md-3">-->
-                <!--<form class="navbar-form" role="branch">-->
-                    <!--<div class="input-group">-->
-                        <!--<input type="text" class="branch-form form-control awesomplete" placeholder="Search" name="q"  data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails"/>-->
-                        <!--<div class="input-group-btn">-->
-                            <!--<button class="btn btn-primary branch-btn" type="submit" data-target="#branch-form">-->
-                                <!--&lt;!&ndash;<span class="glyphicon glyphicon-branch"></span>&ndash;&gt;-->
-                                <!--<label class="glyphicon glyphicon-branch" rel="tooltip"></label>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-            <!--</div>-->
 
             <ul class="nav navbar-nav navbar-right" ng-hide="$root.isLoggedIn">
                 <li>
@@ -41,8 +28,10 @@
 
             <ul class="nav navbar-nav navbar-right" ng-show="$root.isLoggedIn">
                 <li>
-                    <a ng-hide="model.user.buName" href="#/user/{{model.user._id}}">Profile</a>
-                    <a ng-show="model.user.buName" href="#/buser/{{model.user._id}}">Profile</a>
+                    <!--<a ng-show="$root.currentUser.role=='CUSTOMER'" href="#/user/{{model.user._id}}">Profile</a>-->
+                    <!--<a ng-show="$root.currentUser.role=='BUSINESS'" href="#/buser/{{model.user._id}}">Profile</a>-->
+                    <!--<a ng-show="model.user.buName" href="#/buser/{{model.user._id}}">Profile</a>-->
+                    <a href="#/user">Profile</a>
                 </li>
                 <li>
                     <a href="#" ng-click="model.logout()">Logout</a>
@@ -78,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">This is the only place to check-in to what you need!</h2>
+                <h2 class="section-heading">One stop for checking-in to your favourite stores!</h2>
                 <hr class="light">
                 <p class="text-faded">Check in to your pharmacy, salon or any other businesses partnering with our service. Create an account for more options!</p>
             </div>

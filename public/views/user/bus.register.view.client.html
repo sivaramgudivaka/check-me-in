@@ -8,12 +8,13 @@
             </a>
         </div>
 
+
+
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div style="text-align: center">
                 <h4 style="text-align: center"><b>REGISTER</b></h4>
             </div>
-            <!--<a class="btn" ng-click="">MANAGE CHECK-IN</a>-->
         </div>
 
         <!-- /.navbar-collapse -->
@@ -23,24 +24,33 @@
 <div class="container">
     <br><br><br>
     <h1>Register your business</h1>
-    <input type="text"
-           ng-model="model.user.buName"
-           class="form-control"
-           placeholder="Business name" required/>
-    <input type="text"
-           ng-model="model.user.username"
-           class="form-control"
-           placeholder="username" required/>
-    <input type="password"
-           ng-model="model.user.password"
-           class="form-control"
-           placeholder="password" required/>
-    <input type="password"
-           ng-model="model.user.password2"
-           class="form-control"
-           placeholder="confirm password" required/>
+    <div class="form-group">
+        <input type="text"
+               ng-model="model.user.buName"
+               class="form-control"
+               placeholder="Business name" required/>
+    </div>
+    <div class="form-group">
+        <input type="text"
+               ng-model="model.user.username"
+               class="form-control"
+               placeholder="username" required/>
+        </div>
+    <div class="form-group">
+        <input type="password"
+               ng-model="model.user.password"
+               class="form-control"
+               placeholder="password" required/>
+    </div>
+    <div class="form-group">
+        <input type="password"
+               ng-model="model.user.password2"
+               class="form-control"
+               placeholder="confirm password" required/>
+    </div>
     <a class="btn btn-primary btn-block btn-blue" ng-click="model.register(model.user, 'BUSINESS')">Register</a>
     <div ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
+    <div class="{{model.loader}}"></div>
 </div>

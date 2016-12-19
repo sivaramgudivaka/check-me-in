@@ -125,22 +125,33 @@ module.exports = function(app, model) {
             .userModel
             .findUserByUsername(user.username)
             .then(function (nuser) {
-                if(nuser != null){
+                if (nuser != null) { //username already taken
                     res.status(400).send('user already exists');
-                }else{
-                    user.password = bcrypt.hashSync(user.password);
+                }
+                else {//new user
                     model
                         .userModel
-                        .createUser(user)
-                        .then(function(user){
-                            if(user){
-                                req.login(user, function(err) {
-                                    if(err) {
-                                        res.status(400).send(err);
-                                    } else {
-                                        res.json(user);
-                                    }
-                                });
+                        .findBusinessByName(user.buName)
+                        .then(function (nuser) {
+                            if (nuser != null) {//buname taken
+                                res.status(400).send('Business Name already exists')
+                            }
+                            else {
+                                user.password = bcrypt.hashSync(user.password);
+                                model
+                                    .userModel
+                                    .createUser(user)
+                                    .then(function (user) {
+                                        if (user) {
+                                            req.login(user, function (err) {
+                                                if (err) {
+                                                    res.status(400).send(err);
+                                                } else {
+                                                    res.json(user);
+                                                }
+                                            });
+                                        }
+                                    });
                             }
                         });
                 }

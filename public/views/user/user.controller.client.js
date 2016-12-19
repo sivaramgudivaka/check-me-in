@@ -58,6 +58,7 @@
     function RegisterController($location, UserService, BranchService,  $rootScope) {
         var vm = this;
         vm.register = register;
+        vm.loader ='';
 
         function register(user, type) {
             if(!user || !user.username || !user.password || !user.password2 || (type == 'BUSINESS' && !user.buName)){
@@ -72,6 +73,7 @@
                         vm.uid = response._id;
                         $rootScope.currentUser = response;
                         if(type=='BUSINESS'){   //add branches
+                            vm.loader = 'loader';
                             UserService
                                 .findUserById(vm.uid)
                                 .then(function (nuser) {
@@ -89,6 +91,10 @@
                                                 .then(function (response) {
                                                     if(response.data.status == "OK")
                                                         $location.url((type=='BUSINESS'?'/b':'/')+"user/" + vm.uid + "/branch");
+                                                    else {
+                                                        vm.loader = '';
+                                                        vm.error = "Invalid Busniess Name!";
+                                                    }
                                                 });
                                         });
                                 });
@@ -113,6 +119,11 @@
         if ($location.url() == "/user"){
             vm.user = $rootScope.currentUser;
             $rootScope.isLoggedIn = true;
+            if(vm.user.role == 'BUSINESS'){
+                $location.url('/buser/'+vm.user._id);
+            }else{
+                $location.url('/user/'+vm.user._id);
+            }
         }else{
             UserService.findUserById(userId)
                 .success(function (user) {

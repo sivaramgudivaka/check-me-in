@@ -39,7 +39,7 @@
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
-            .when("/buser/:uid/", {
+            .when("/buser/:uid", {
                 templateUrl: "views/user/bus.profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",

@@ -37,7 +37,7 @@
             }else{
                 var brid = $routeParams.brid;
                 var data = {
-                    uid : user._id,
+                    uid : user._id || 0,
                     brid : brid,
                     FirstName : user.firstName,
                     LastName : user.lastName,
