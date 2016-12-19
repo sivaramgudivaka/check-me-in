@@ -100,9 +100,11 @@ module.exports = function(app, model) {
         str += data.lat+','+data.lng+'&rankby=distance&keyword='+data.buName+'&key=';
         // str += 'AIzaSyAYgmu4Ye1O24ipull8rjuyYvXHZ6hELXo';
         str += authKeys.google.placesKey;
+       console.log(str);
         unirest.post(str)
             .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
             .end(function (response) {
+                console.log(response);
                 if(response.body.status == 'OK'){
                     var reqObj = response.body;
                     reqObj.uid = data.uid;

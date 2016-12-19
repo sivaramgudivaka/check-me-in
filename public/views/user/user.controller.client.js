@@ -89,6 +89,7 @@
                                             BranchService
                                                 .populatebranches(data)
                                                 .then(function (response) {
+                                                    console.log(response);
                                                     if(response.data.status == "OK")
                                                         $location.url((type=='BUSINESS'?'/b':'/')+"user/" + vm.uid + "/branch");
                                                     else {
