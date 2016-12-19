@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1635349a-2e0d-4c2e-8d9a-1c308b30e523" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ide/services/branch.service.server.js" afterPath="$PROJECT_DIR$/ide/services/branch.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/user.controller.client.js" afterPath="$PROJECT_DIR$/public/views/user/user.controller.client.js" />
     </list>
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,8 +60,8 @@
       <file leaf-file-name="branch.service.server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ide/services/branch.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
+            <state relative-caret-position="-142">
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -583,12 +582,12 @@
       <updated>1481561778703</updated>
       <workItem from="1481561779948" duration="100578000" />
       <workItem from="1481949773253" duration="15547000" />
-      <workItem from="1481950917878" duration="84857000" />
+      <workItem from="1481950917878" duration="85729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200982000" />
+    <option name="totallyTimeSpent" value="201854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1003,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ide/services/branch.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
+        <state relative-caret-position="-142">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding />
         </state>
       </provider>

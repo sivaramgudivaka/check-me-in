@@ -73,7 +73,6 @@ module.exports = function(app, model) {
 
     function addBranches(req, res){
         var branches = req.results;
-        console.log(branches);
         for(var i in branches){
             var branch = branches[i];
             if(branch.permanently_closed != 'true'){
@@ -104,7 +103,6 @@ module.exports = function(app, model) {
         unirest.post(str)
             .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
             .end(function (response) {
-                console.log(response);
                 if(response.body.status == 'OK'){
                     var reqObj = response.body;
                     reqObj.uid = data.uid;
