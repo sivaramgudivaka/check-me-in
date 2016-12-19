@@ -36,17 +36,26 @@
                 vm.user = $rootScope.currentUser;
             }
             else{
+                // UserService
+                //     .findUserById(vm.uid)
+                //     .success(function (user) {
+                //         console.log(user);
+                //         vm.user = user;
+                //     })
+                //     .error(function (msg) {
+                //         console.log(msg);
+                //     });
+                // if(vm.user.role == 'BUSINESS')
+                //     $location.url('/');
+                // }
                 UserService
                     .findUserById(vm.uid)
-                    .success(function (user) {
-                        vm.user = user;
-                    })
-                    .error(function (msg) {
-                        console.log(msg);
+                    .then(function (response) {
+                        vm.user = response.data;
+                        if(vm.user.role == 'BUSINESS')
+                            $location.url('/');
                     });
-                if(vm.user.role == 'BUSINESS')
-                    $location.url('/');
-                }
+            }
             }
 
         init();
